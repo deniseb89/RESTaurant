@@ -39,7 +39,9 @@ end
 
 
 # show: Display a single food item and a list of all the parties that included it
-
+get '/foods/:id' do 
+	@food = Food.find(params[:id])
+	erb :'foods/show'
 
 # destroy: Removes a food 
 
