@@ -84,7 +84,10 @@ end
 
 
 # show: Display a single party and options for adding a food item to the party
-
+get '/parties/:id' do 
+	@party = Party.find(params[:id])
+	erb :'parties/show'
+end
 
 # destroy: Removes a party
 
