@@ -5,7 +5,9 @@
 <ul>
 	<% @foods.each do |food| %>
 		<li>
-			<%= food.name %>
+			<a href="/foods/<%= food.id %>">
+				<%= food.name %>
+			</a>
 		</li>
 	<% end %>
 </ul>
