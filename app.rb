@@ -73,7 +73,7 @@ end
 
 # create: Creates a new party
 post '/parties' do 
-	party = Party.create(params[:id])
+	party = Party.create(params[:party])
 	redirect "/parties/#{party.id}"
 end
 
@@ -92,7 +92,8 @@ end
 
 # show: Display a single party and options for adding a food item to the party
 get '/parties/:id' do 
-	@party = Party.find(params[:id])	
+	@party = Party.find(params[:id])
+	@food = Food.find(params[:id])	
 	erb :'parties/show'
 end
 
@@ -107,7 +108,9 @@ end
 
 # create: Creates a new order
 post '/orders' do 
-	order = Order.create(party.foods << food)
+	party = Party.find(params[:party_id])
+	food = Food.find(params[:id])
+	party.foods << food
 	redirect "/parties/#{party.id}"
 end
 

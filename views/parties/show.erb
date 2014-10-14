@@ -4,9 +4,18 @@
 
 <table>
 	<tr>
-		<th>Table Number</th>
-		<th>Number of Guests</th>
-		<th>Paid?</th>
+		<th>
+			Table Number
+		</th>
+		<th>
+			Number of Guests
+		</th>
+		<th>
+			Food Ordered
+		</th>
+		<th>
+			Paid?
+		</th>
 	</tr>
 	<tr>
 		<td>
@@ -16,18 +25,25 @@
 			<%= @party.guests %>
 		</td>
 		<td>
+			<%= @food.name %>
+		</td>
+		<td>
 			<%= @party.pay_status %>
 		</td>
 	</tr>
 </table>
 
+
+
+
 <h4>
 	Add Menu Item to this Party:
 </h4>
-<form action="/parties/<%= @party.id %>" method="post">
+<form action="/orders" method="post">
 	<p>	
 		Item Number:
-		<input type="text" name="food[id]" />
+		<input type="text" name="id" />
+		<input type="hidden" name="party_id" value="<%= @party.id %>">
 	</p>	
 	<input type="submit" />
 </form>

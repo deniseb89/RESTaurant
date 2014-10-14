@@ -5,7 +5,18 @@
 <ul>
 	<% @parties.each do |party| %>
 		<li>
-			<%= party.name %>
+			<%= party.id %>
 		</li>
 	<% end %>
 </ul>
+
+<h4>
+	<a href="/parties/new">
+		Add a Party
+	</a>
+</h4>
+<h4>
+	<a href="/">
+		Home
+	</a>
+</h4>
