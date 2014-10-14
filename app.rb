@@ -10,11 +10,16 @@ ActiveRecord::Base.establish_connection({
 	database: 'restaurant_db'
 	})
 
-# index: Display the navigation page for RESTaurant
-
+# index: Displays links to navigate the application (including links to each current parties)
+get '/' do 
+	erb :index
+end
 
 # index: Display all the available foods
-
+get '/foods' do 
+	@foods = Food.all 
+	erb :"foods/index"
+end
 
 # new: Return a form for a new food
 
