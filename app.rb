@@ -78,10 +78,17 @@ post '/parties' do
 end
 
 # edit: Returns a form to edit a party's details
-
+get '/parties/:id/edit' do 
+	@party = Party.find(params[:id])
+	erb :'parties/edit'
+end
 
 # update: Updates an existing party's details
-
+patch '/parties/:id' do 
+	party = Party.find(params[:id])
+	party.update(params[:party])
+	redirect "/parties/#{party.id}"
+end
 
 # show: Display a single party and options for adding a food item to the party
 get '/parties/:id' do 

@@ -1,0 +1,38 @@
+<h2>
+	Edit Party's Details
+</h2>
+
+<form action="/parties/<%= @party.id %>" method="post">
+	<p>
+		Table Number:
+		<input type="text" name="party[table_number]" value="<%= @party.table_number %>" />
+	</p>	
+	<p>
+		Number of Guests:
+		<input type="text" name="party[guests]" value="<%= @party.guests %>" />
+	</p>
+	<p>
+		Paid? <br>
+		<input type="radio" name="party[pay_status]" value="True" />Yes<br>
+		<input type="radio" name="party[pay_status]" value="False" />No
+	</p>
+	<input type="submit" name="Edit Party" />
+</form>
+
+
+
+<h4>
+	<a href="/parties/<%= @party.id %>">
+		Back to Party
+	</a>
+</h4>
+<h4>
+	<a href="/parties">
+		Back to Parties
+	</a>
+</h4>
+<h4>
+	<a href="/">
+		Home
+	</a>
+</h4>
