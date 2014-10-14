@@ -1,0 +1,42 @@
+<h2>
+	Edit Food Details
+</h2>
+
+<form action="/foods/<%= @food.id %>" method="post">
+	<input type="hidden" name="_method" value="patch" />
+	<p> 
+		Name:
+		<input type="text" name="food[name]" value="<%= @food.name %>" />
+	</p>	
+	<p>
+		Cuisine: 
+		<input type="text" name="food[cuisine]" value="<%= @food.cuisine %>" />
+	</p>
+	<p>
+		Price:
+		<input type="text" name="food[price]" value="<%= @food.price %>" />
+	</p>
+	<p>
+		Allergens:
+		<input type="text" name="food[allergens]" value="<%= @food.allergens %>" />
+	</p>
+	<p>
+		Spicy Level:
+		<input type="text" name="food[spicy_level]" value="<%= @food.spicy_level %>" />
+	</p>
+	<input type="submit" value="Edit Food" />
+</form>
+
+
+
+
+
+<h4>
+	<a href="/foods/<%= @food.id %>">Back to Food Item</a>
+</h4>
+<h4>
+	<a href="/foods">Back to Menu</a>
+</h4>
+<h4>
+	<a href="/">Home</a>
+</h4>
