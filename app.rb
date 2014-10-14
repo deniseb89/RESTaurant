@@ -61,7 +61,10 @@ end
 
 
 # index: Display all the parties
-
+get '/parties' do 
+	@parties = Party.all 
+	erb :'parties/index'
+end
 
 # new: Return a form for a new party
 

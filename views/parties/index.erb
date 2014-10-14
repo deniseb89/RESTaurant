@@ -1,0 +1,11 @@
+<h1>
+	Current Parties
+</h1>
+
+<ul>
+	<% @parties.each do |party| %>
+		<li>
+			<%= party.name %>
+		</li>
+	<% end %>
+</ul>
