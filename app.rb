@@ -67,10 +67,15 @@ get '/parties' do
 end
 
 # new: Return a form for a new party
-
+get '/parties/new' do 
+	erb :'parties/new'
+end
 
 # create: Creates a new party
-
+post '/parties' do 
+	party = Party.create(params[:id])
+	redirect "/parties/#{party.id}"
+end
 
 # edit: Returns a form to edit a party's details
 
