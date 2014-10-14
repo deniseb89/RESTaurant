@@ -27,7 +27,10 @@ get '/foods/new' do
 end
 
 # create: Creates a new food
-
+post '/foods' do 
+	food = Food.create(params[:food])
+	redirect "/foods/#{food.id}"
+end
 
 # edit: Returns a form to edit a food
 
