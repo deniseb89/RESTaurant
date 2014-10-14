@@ -33,10 +33,17 @@ post '/foods' do
 end
 
 # edit: Returns a form to edit a food
-
+get '/foods/:id/edit' do 
+	@food = Food.find(params[:id])
+	erb :'foods/edit'
+end
 
 # update: Updates an existing food
-
+patch '/foods/:id' do 
+	food = Food.find(params[:id])
+	food.update(params[:food])
+	redirect "/foods/#{food.id}"
+end
 
 # show: Display a single food item and a list of all the parties that included it
 get '/foods/:id' do 
@@ -45,7 +52,10 @@ get '/foods/:id' do
 end
 
 # destroy: Removes a food 
-
+delete '/foods/:id' do 
+	Food.destroy(params[:id])
+	redirect'/foods'
+end
 
 
 
