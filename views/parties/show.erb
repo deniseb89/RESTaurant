@@ -21,6 +21,17 @@
 	</tr>
 </table>
 
+<h4>
+	Add Menu Item to this Party:
+</h4>
+<form action="/parties/<%= @party.id %>" method="post">
+	<p>	
+		Item Number:
+		<input type="text" name="food[id]" />
+	</p>	
+	<input type="submit" />
+</form>
+
 
 
 <h4>

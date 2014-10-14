@@ -39,6 +39,16 @@
 	</tr>
 </table>
 
+<h4>
+	Parties that ordered this item:
+</h4>
+<ul>	
+	<% @food.parties.each do |party| %>
+		<li>
+			<%= party %>
+		</li>
+	<% end %>
+</ul>
 
 <h4>
 	<a href="/foods/<%= @food.id %>/edit">

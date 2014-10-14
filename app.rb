@@ -92,7 +92,7 @@ end
 
 # show: Display a single party and options for adding a food item to the party
 get '/parties/:id' do 
-	@party = Party.find(params[:id])
+	@party = Party.find(params[:id])	
 	erb :'parties/show'
 end
 
@@ -106,7 +106,10 @@ end
 
 
 # create: Creates a new order
-
+post '/orders' do 
+	order = Order.create(party.foods << food)
+	redirect "/parties/#{party.id}"
+end
 
 # edit: Change an item to no-charge
 
