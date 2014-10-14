@@ -22,7 +22,9 @@ get '/foods' do
 end
 
 # new: Return a form for a new food
-
+get '/foods/new' do 
+	erb :"foods/new"
+end
 
 # create: Creates a new food
 
