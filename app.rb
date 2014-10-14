@@ -97,7 +97,10 @@ get '/parties/:id' do
 end
 
 # destroy: Removes a party
-
+delete '/parties/:id' do 
+	Party.destroy(params[:id])
+	redirect '/parties'
+end
 
 
 

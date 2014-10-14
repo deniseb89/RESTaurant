@@ -22,6 +22,16 @@
 </table>
 
 
+
+<h4>
+	<a href="/parties/<%= @party.id %>/edit">
+		Edit
+	</a>
+</h4>
+<form action="/parties/<%= @party.id %>" method="post">
+	<input type="hidden" name="_method" value="delete" />
+	<input type="submit" value="Delete" />
+</form>
 <h4>
 	<a href="/parties">
 		Back to Parties
