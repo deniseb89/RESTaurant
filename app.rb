@@ -139,15 +139,9 @@ end
 		
 # /parties/:id/checkout: Marks the party as paid
 get '/parties/:id/checkout' do 
-	@party = Party.find(params[:id])
-	@orders = Order.all
 	Party.destroy(params[:id])
-	@orders.each do |order|
-		if order.party_id == @party.id
-			Order.destroy(order.id)
-		end
-	end
-	redirect '/parties'
+	
+	erb :'parties/show'
 end
 
 
