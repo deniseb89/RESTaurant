@@ -19,6 +19,23 @@
 	<input type="submit" name="Edit Party" />
 </form>
 
+<h2>
+	Edit Order
+</h2>
+
+<form action="/orders/<%= @order.id %>" method="post">
+	<p>
+		Food Ordered: 
+		<input type="text" name="food[name]" value="<%= @food.name %>" />
+	</p>
+	<p>
+		Price: 
+		<input type="text" name="food[name]" value="<%= @food.price %>" />
+	</p>
+	<input type="submit" name="Edit Order" />
+</form>
+
+
 
 
 <h4>

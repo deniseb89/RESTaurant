@@ -11,7 +11,7 @@
 			Number of Guests
 		</th>
 		<th>
-			Food Ordered
+			Price
 		</th>
 		<th>
 			Paid?
@@ -25,14 +25,29 @@
 			<%= @party.guests %>
 		</td>
 		<td>
-			<%= @food.name %>
-		</td>
-		<td>
 			<%= @party.pay_status %>
 		</td>
 	</tr>
 </table>
 
+<table>
+	<tr>
+		<th>
+			Food Ordered
+		</th>
+		<th>
+			Price
+		</th>
+	</tr>
+	<tr>
+		<td>
+			<%= @food.name %>
+		</td>
+		<td>
+			<%= @food.price %>
+		</td>
+	</tr>
+</table>
 
 
 

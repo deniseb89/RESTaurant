@@ -80,12 +80,14 @@ end
 # edit: Returns a form to edit a party's details
 get '/parties/:id/edit' do 
 	@party = Party.find(params[:id])
+	@food = Food.find(params[:id])
 	erb :'parties/edit'
 end
 
 # update: Updates an existing party's details
 patch '/parties/:id' do 
 	party = Party.find(params[:id])
+	food = Food.find(params[:id])
 	party.update(params[:party])
 	redirect "/parties/#{party.id}"
 end
@@ -115,10 +117,17 @@ post '/orders' do
 end
 
 # edit: Change an item to no-charge
-
+patch '/orders/:id' do 
+	order = Order.find(params[:id])
+	order.update(params[:food_id])
+	redirect "/parties/#{party.id}"
+end
 
 # destroy: Removes an order
-
+delete '/orders' do 
+	Order.destroy(params[:id])
+	redirect '/parties'
+end
 
 
 
