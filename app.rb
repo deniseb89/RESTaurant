@@ -132,16 +132,23 @@ end
 get '/parties/:id/receipt' do 
 	@party = Party.find(params[:id])
 	@food = Food.find(params[:id])
-	@party.foods << food
-	@file = File.open("receipt.txt", "w") 
+	@party.foods 
 
 	erb :'parties/receipt'
 end
 		
-
-
 # /parties/:id/checkout: Marks the party as paid
-# patch '/parties/:id/checkout' do 
+get '/parties/:id/checkout' do 
+	@party = Party.find(params[:id])
+	@orders = Order.all
+	Party.destroy(params[:id])
+	@orders.each do |order|
+		if order.party_id == @party.id
+			Order.destroy(order.id)
+		end
+	end
+	redirect '/parties'
+end
 
 
 

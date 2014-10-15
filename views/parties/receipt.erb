@@ -2,15 +2,68 @@
 	Receipt
 </h2>
 
-<p>
+<h3>
+	for Table <%= @party.table_number %>
+</h3>
+
+<h4>
+	<%= Time.now.strftime("on %m/%d/%Y at %I:%M%p") %>
+</h4>
+
+<table>
+	<tr>
+		<th>
+			Food Ordered
+		</th>
+		<th>
+			Price
+		</th>
+	</tr>
 	<% total = 0 %>
-	<% @file.write("HEADING\n") %>
-	<% @file.write("MORE HEADERS\n") %>
-	<% @party.foods.each do |food| %>
-		<% @file.write("#{food.name}, #{food.price}\n") %>
-		<% total += food.price %>
+	<% @party.foods.each do |food| %>	
+		<tr>
+			<td>
+				<%= food.name %>
+			</td>
+			<td>
+				$<%= food.price.round(2) %>
+			</td>
+		</tr>
+	<% total += food.price %>	
 	<% end %>
-	<% @file.write("Total: #{total.round(2)}\n") %>
-	<% @file.close %>
-	<%= @file.read %>
-</p>	
+	<tr>
+		<th>
+			TOTAL
+		</th>
+		<th>
+			$<%= total.round(2) %>
+		</th>
+	</tr>
+	<tr>
+		<th>
+			Tip Suggestions
+		</th>
+	</tr>	
+	<tr>
+		<td>
+			15% = $<%= (total * 0.15).round(2) %>
+		</td>
+		<td>
+			20% = $<%= (total * 0.2).round(2) %>
+		</td>
+		<td>
+			25% = $<%= (total * 0.25).round(2) %>
+		</td>
+	</tr>
+</table>
+
+<h5>
+	Thank you! Come again!
+</h5>	
+
+
+<a href="javascript:if(window.print)window.print()">Print</a>
+
+<h4>
+	<a href="/">Home</a>
+</h4>
