@@ -5,7 +5,9 @@
 <ul>
 	<% @parties.each do |party| %>
 		<li>
-			<%= party.id %>
+			<a href="/parties/<%= party.id %>">
+				<%= party.surname %>
+			</a>
 		</li>
 	<% end %>
 </ul>

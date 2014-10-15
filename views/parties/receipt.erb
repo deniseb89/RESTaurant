@@ -1,0 +1,16 @@
+<h2>
+	Receipt
+</h2>
+
+<p>
+	<% total = 0 %>
+	<% @file.write("HEADING\n") %>
+	<% @file.write("MORE HEADERS\n") %>
+	<% @party.foods.each do |food| %>
+		<% @file.write("#{food.name}, #{food.price}\n") %>
+		<% total += food.price %>
+	<% end %>
+	<% @file.write("Total: #{total.round(2)}\n") %>
+	<% @file.close %>
+	<%= @file.read %>
+</p>	

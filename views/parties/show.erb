@@ -5,6 +5,9 @@
 <table>
 	<tr>
 		<th>
+			Surname
+		</th>
+		<th>
 			Table Number
 		</th>
 		<th>
@@ -18,6 +21,9 @@
 		</th>
 	</tr>
 	<tr>
+		<td>
+			<%= @party.surname %>
+		</td>
 		<td>
 			<%= @party.table_number %>
 		</td>
@@ -39,15 +45,18 @@
 			Price
 		</th>
 	</tr>
+	<% @party.foods.each do |food| %>
 	<tr>
 		<td>
-			<%= @food.name %>
+			<%= food.name %>
 		</td>
 		<td>
-			<%= @food.price %>
+			<%= food.price %>
 		</td>
 	</tr>
+	<% end %>
 </table>
+
 
 
 
@@ -74,6 +83,13 @@
 	<input type="hidden" name="_method" value="delete" />
 	<input type="submit" value="Delete" />
 </form>
+
+<h4>
+	<a href="/parties/<%= @party.id %>/receipt">
+		Receipt
+	</a>
+</h4>
+
 <h4>
 	<a href="/parties">
 		Back to Parties

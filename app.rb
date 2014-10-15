@@ -59,7 +59,6 @@ end
 
 
 
-
 # index: Display all the parties
 get '/parties' do 
 	@parties = Party.all 
@@ -80,31 +79,36 @@ end
 # edit: Returns a form to edit a party's details
 get '/parties/:id/edit' do 
 	@party = Party.find(params[:id])
-	@food = Food.find(params[:id])
 	erb :'parties/edit'
 end
 
 # update: Updates an existing party's details
 patch '/parties/:id' do 
 	party = Party.find(params[:id])
-	food = Food.find(params[:id])
 	party.update(params[:party])
-	redirect "/parties/#{party.id}"
+	redirect "/parties"
 end
 
 # show: Display a single party and options for adding a food item to the party
 get '/parties/:id' do 
 	@party = Party.find(params[:id])
 	@food = Food.find(params[:id])	
+	@party.foods
 	erb :'parties/show'
 end
 
 # destroy: Removes a party
 delete '/parties/:id' do 
+	@party = Party.find(params[:id])
+	@orders = Order.all
 	Party.destroy(params[:id])
+	@orders.each do |order|
+		if order.party_id == @party.id
+			Order.destroy(order.id)
+		end
+	end
 	redirect '/parties'
 end
-
 
 
 
@@ -116,27 +120,28 @@ post '/orders' do
 	redirect "/parties/#{party.id}"
 end
 
-# edit: Change an item to no-charge
-patch '/orders/:id' do 
-	order = Order.find(params[:id])
-	order.update(params[:food_id])
+# destroy: Removes an order
+delete '/orders/:id' do 
+	Order.destroy(params[:id])
 	redirect "/parties/#{party.id}"
 end
-
-# destroy: Removes an order
-delete '/orders' do 
-	Order.destroy(params[:id])
-	redirect '/parties'
-end
-
 
 
 
 # /parties/:id/receipt: Saves the party's receipt data to a file. Displays the content of the receipt. Offer the file for download.
+get '/parties/:id/receipt' do 
+	@party = Party.find(params[:id])
+	@food = Food.find(params[:id])
+	@party.foods << food
+	@file = File.open("receipt.txt", "w") 
 
+	erb :'parties/receipt'
+end
+		
 
 
 # /parties/:id/checkout: Marks the party as paid
+# patch '/parties/:id/checkout' do 
 
 
 
