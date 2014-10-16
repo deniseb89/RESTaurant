@@ -118,10 +118,16 @@ end
 
 # create: Creates a new order
 post '/orders' do 
-	party = Party.find(params[:party_id])
-	food = Food.find(params[:id])
-	party.foods << food
-	redirect "/parties/#{party.id}"
+	parties = Party.all
+	@party = Party.find(params[:party_id])
+	@food = Food.find(params[:id])
+	if parties.find(params[:party_id]).pay_status == true
+		@error_already_paid = "ERROR! This party has already paid."
+		erb :'parties/show'
+	else		
+		party.foods << food
+		redirect "/parties/#{party.id}"		
+	end	
 end
 
 # destroy: Removes an order
@@ -143,10 +149,11 @@ get '/parties/:id/receipt' do
 end
 		
 # /parties/:id/checkout: Marks the party as paid
-get '/parties/:id/checkout' do 
-	Party.destroy(params[:id])
-	
-	erb :'parties/show'
+patch '/parties/:id/checkout' do 
+	party = Party.find(params[:id])
+	party.pay_status == true
+	party.save
+	redirect "/parties"
 end
 
 

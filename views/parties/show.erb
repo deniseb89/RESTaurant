@@ -33,6 +33,14 @@
 	</tr>
 </table>
 
+<% if @error_already_paid %>
+<h2>
+	<%= @error_already_paid %>
+</h2>
+<% end %>	
+
+
+
 <table>
 	<tr>
 		<th>
@@ -94,6 +102,11 @@
 		Receipt
 	</a>
 </h4>
+
+<form action="/parties/<%= @party.id %>/checkout" method="post">
+	<input type="hidden" name="_method" value="patch" />
+	<input type="submit" value="Mark as Paid" /> 
+</form>
 
 <h4>
 	<a href="/parties">
