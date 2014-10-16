@@ -1,3 +1,14 @@
+<% if @errors %>
+<div class="errors">
+<h1>FIRE AT THE DISCO! YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
+  <ul>
+    <% @errors.each do |error|  %>
+      <li><h2><%= error %></h2></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <h2>
 	Add a New Food to the Menu
 </h2>

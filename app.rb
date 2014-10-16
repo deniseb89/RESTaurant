@@ -1,9 +1,8 @@
 require 'bundler'
 Bundler.require
 
-require_relative 'models/food'
-require_relative 'models/party'
-require_relative 'models/order'
+ROOT = Dir.pwd
+Dir[ROOT+"/models/*.rb"].each	{ |file| require file }
 
 ActiveRecord::Base.establish_connection({
 	adapter: 'postgresql',
@@ -29,7 +28,12 @@ end
 # create: Creates a new food
 post '/foods' do 
 	food = Food.create(params[:food])
-	redirect "/foods/#{food.id}"
+	if food.valid?
+		redirect "/foods/#{food.id}"
+	else
+		@errors = food.errors.full_messages
+		erb :'foods/new'
+	end
 end
 
 # edit: Returns a form to edit a food
@@ -121,9 +125,10 @@ post '/orders' do
 end
 
 # destroy: Removes an order
-delete '/orders/:id' do 
-	Order.destroy(params[:id])
-	redirect "/parties/#{party.id}"
+delete '/parties/:party_id/orders' do 
+	party_id = params[:party_id]
+	Order.destroy(params[:order_id])
+	redirect "/parties/#{party_id}"
 end
 
 

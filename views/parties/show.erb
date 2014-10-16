@@ -36,25 +36,33 @@
 <table>
 	<tr>
 		<th>
-			Food Ordered
+			Food
 		</th>
 		<th>
 			Price
 		</th>
+		<th>
+			Remove Order?
+		</th>
 	</tr>
-	<% @party.foods.each do |food| %>
-	<tr>
-		<td>
-			<%= food.name %>
-		</td>
-		<td>
-			<%= food.price %>
-		</td>
-	</tr>
+	<% @party.orders.each do |order| %>
+		<tr>
+			<td>
+				<%= order.food.name %>
+			</td>
+			<td>
+				<%= order.food.price %>
+			</td>
+			<td>
+				<form action="/parties/<%= @party.id %>/orders" method="post">
+					<input type="hidden" name="order_id" value="<%= order.id %>">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" value="Remove">
+				</form>
+			</td>
+		</tr>
 	<% end %>
 </table>
-
-
 
 
 <h4>
