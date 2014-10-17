@@ -4,6 +4,8 @@ Welcome to Dung a Gully Jerk Pit. We serve the finest Jamaican food in Brooklyn.
 
 As an employee, you can use this portal to keep track of the menu and current guests at the restaurant. 
 
+MENU
+
 In order to view the menu, you can click "Menu" from the homepage or type in "/foods" at the end of the weblink to view every item that we offer.
 
 To edit an item, click on the name and make changes on the screen.
@@ -11,6 +13,8 @@ To edit an item, click on the name and make changes on the screen.
 To add a new item, from the menu page, click "Add New Item" and fill in the text boxes on the screen.
 
 To delete a food, click the "Delete" button in the food details page.
+
+PARTIES
 
 In order to view current parties, click "Parties" on the homepage, or type "/parties" at the end of the weblink.
 
@@ -26,7 +30,7 @@ To mark a party as paid, click on the "Mark as Paid" button in their details pag
 
 To delete or checkout a party, click the "Delete" button. 
 
-Tools used to build this app:
+TOOLS USED TO BUILD THIS APP
 - Ruby
 - Sinatra
 - HTML
