@@ -1,69 +1,69 @@
-<h2>
-	Receipt
-</h2>
+<div class="content">
+	<h2>
+		Receipt
+	</h2>
 
-<h3>
-	for Table <%= @party.table_number %>
-</h3>
+	<h3>
+		for Table <%= @party.table_number %>
+	</h3>
 
-<h4>
-	<%= Time.now.strftime("on %m/%d/%Y at %I:%M%p") %>
-</h4>
+	<h4>
+		<%= Time.now.strftime("on %m/%d/%Y at %I:%M%p") %>
+	</h4>
 
-<table>
-	<tr>
-		<th>
-			Food Ordered
-		</th>
-		<th>
-			Price
-		</th>
-	</tr>
-	<% total = 0 %>
-	<% @party.foods.each do |food| %>	
+	<table class="receipt" width="50%" cellspacing="3">
+		<tr>
+			<th colspan="2">
+				Food Ordered
+			</th>
+			<th>
+				Price
+			</th>
+		</tr>
+		<% total = 0 %>
+		<% @party.foods.each do |food| %>	
+			<tr>
+				<td colspan="2">
+					<%= food.name %>
+				</td>
+				<td>
+					$<%= food.price.round(2) %>
+				</td>
+			</tr>
+		<% total += food.price %>	
+		<% end %>
+		<tr>
+			<th colspan="2">
+				TOTAL
+			</th>
+			<th>
+				$<%= total.round(2) %>
+			</th>
+		</tr>
+		<tr>
+			<th colspan="3">
+				Tip Suggestions
+			</th>
+		</tr>	
 		<tr>
 			<td>
-				<%= food.name %>
+				15% = $<%= (total * 0.15).round(2) %>
 			</td>
 			<td>
-				$<%= food.price.round(2) %>
+				20% = $<%= (total * 0.2).round(2) %>
+			</td>
+			<td>
+				25% = $<%= (total * 0.25).round(2) %>
 			</td>
 		</tr>
-	<% total += food.price %>	
-	<% end %>
-	<tr>
-		<th>
-			TOTAL
-		</th>
-		<th>
-			$<%= total.round(2) %>
-		</th>
-	</tr>
-	<tr>
-		<th>
-			Tip Suggestions
-		</th>
-	</tr>	
-	<tr>
-		<td>
-			15% = $<%= (total * 0.15).round(2) %>
-		</td>
-		<td>
-			20% = $<%= (total * 0.2).round(2) %>
-		</td>
-		<td>
-			25% = $<%= (total * 0.25).round(2) %>
-		</td>
-	</tr>
-</table>
+	</table>
 
-<h5>
-	Thank you! Come again!
-</h5>	
+	<h5>
+		Thank you! Come again!
+	</h5>	
+</div>
 
-
-<a href="javascript:if(window.print)window.print()">Print</a>
-
-<h4>
-	<a href="/">Home</a>
-</h4>
+<footer>
+	<a class="nav" href="javascript:if(window.print)window.print()">Print</a>
+	<a class="nav" href="/">Home</a>
+</footer>

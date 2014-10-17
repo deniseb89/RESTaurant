@@ -125,7 +125,7 @@ post '/orders' do
 		@error_already_paid = "ERROR! This party has already paid."
 		erb :'parties/show'
 	else		
-		party.foods << food
+		@party.foods << food
 		redirect "/parties/#{party.id}"		
 	end	
 end

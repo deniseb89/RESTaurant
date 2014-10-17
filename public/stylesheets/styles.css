@@ -24,9 +24,11 @@ nav,
 footer {
 	border: 2px solid gold;
   background-color: rgba(0,255,0,0.5);
-  margin: 0;
+  margin: 30px 5px 0 0;
   padding: 10px;
   text-align: center;
+  position: absolute;
+	width: 96%;
 }
 
 .nav {
@@ -37,13 +39,16 @@ footer {
 	font-size: 25px;
 }
 
-ol {
+ol,
+ul {
 	list-style-type: none;
 }
 li {
-	background-color: rgba(255,215,0, 0.3);
+	/*background-color: rgba(255,215,0, 0.3);*/
 	text-align: center;
 	margin-right: 40px;
+	text-decoration: none;
+	color: white;
 }
 
 .menu {
@@ -70,8 +75,9 @@ p {
 table,
 th,
 td {
-	border: 2px dotted grey;
+	border-bottom: 2px dotted grey;
 	margin: 20px auto;
+	padding: 0 2px;
 }
 
 input[type=submit] {
@@ -107,3 +113,7 @@ input[type=submit]:hover {
 	background-color: #9c9c9c;
 }
 
+.receipt {
+	border: 2px dotted grey;
+	
+}

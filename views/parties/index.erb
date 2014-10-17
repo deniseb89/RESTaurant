@@ -2,6 +2,7 @@
 	Current Parties
 </h1>
 
+<div class="content">
 <ul>
 	<% @parties.each do |party| %>
 		<li>
@@ -11,14 +12,13 @@
 		</li>
 	<% end %>
 </ul>
+</div>
 
-<h4>
-	<a href="/parties/new">
+<footer>
+	<a class="nav" href="/parties/new">
 		Add a Party
 	</a>
-</h4>
-<h4>
-	<a href="/">
+	<a class="nav" href="/">
 		Home
 	</a>
-</h4>
+</footer>
