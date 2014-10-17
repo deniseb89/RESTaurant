@@ -1,6 +1,10 @@
+<h1>
+	Add a New Food to the Menu
+</h1>
+
 <% if @errors %>
 <div class="errors">
-<h1>FIRE AT THE DISCO! YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
+<h2>FIRE AT THE DISCO! YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h2>
   <ul>
     <% @errors.each do |error|  %>
       <li><h2><%= error %></h2></li>
@@ -9,11 +13,7 @@
 </div>
 <% end %>
 
-<h2>
-	Add a New Food to the Menu
-</h2>
-
-<form action="/foods" method="post">
+<form class="newfood" action="/foods" method="post">
 	<p> 
 		Name:
 		<input type="text" name="food[name]" />
@@ -37,14 +37,11 @@
 	<input type="submit" value="Add Food" />
 </form>
 
-
-
-
-
-
-<h4>
-	<a href="/foods">Back to Menu</a>
-</h4>
-<h4>
-	<a href="/">Home</a>
-</h4>
+<footer>
+	<a class="nav" href="/foods">
+		Back to Menu
+	</a>
+	<a class="nav" href="/">
+		Home
+	</a>
+</footer>

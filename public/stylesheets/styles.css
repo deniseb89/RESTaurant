@@ -1,0 +1,109 @@
+body {
+	background-color: black;
+	color: white;
+	background-image: url('http://www.idealmagazine.co.uk/wp-content/uploads/2013/07/jerk-chicken1.jpg'); 
+	background-size: cover;
+	background-repeat: no-repeat;
+  font-family: 'Rock Salt', cursive;
+  text-align: center;
+}
+
+h1 {
+  background-color: rgba(105,100,100,0.5);
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 40px;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav,
+footer {
+	border: 2px solid gold;
+  background-color: rgba(0,255,0,0.5);
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.nav {
+	padding-left: 50px;
+	padding-right: 50px;
+	text-decoration: none;
+	color: black;
+	font-size: 25px;
+}
+
+ol {
+	list-style-type: none;
+}
+li {
+	background-color: rgba(255,215,0, 0.3);
+	text-align: center;
+	margin-right: 40px;
+}
+
+.menu {
+	text-decoration: none;
+	color: white;	
+}
+
+footer {
+	position:absolute;
+  width:96%;
+  bottom:0px;
+  margin-right: 5px;
+}
+
+.newfood {
+	background-color: rgba(255,215,0, 0.3);
+	padding-bottom: 20px;
+}
+
+p {
+	font-size: 20px;
+}
+
+table,
+th,
+td {
+	border: 2px dotted grey;
+	margin: 20px auto;
+}
+
+input[type=submit] {
+	padding:10px; 
+	border:1px solid green; 
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	cursor:pointer;
+  font-family: 'Rock Salt', cursive;	
+	font-size: 15px;
+}
+
+input[type=submit]:hover {
+	background-color: #9c9c9c;
+}
+
+.content {
+	background-color: rgba(255,215,0, 0.3);
+	margin-top: 5px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.contentlink {
+	color: white;
+	padding:10px; 
+	border:1px solid green; 
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	cursor:pointer;
+  font-family: 'Rock Salt', cursive;	
+	font-size: 15px;
+	background-color: #9c9c9c;
+}
+

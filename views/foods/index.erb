@@ -5,24 +5,18 @@
 <ol>
 	<% @foods.each do |food| %>
 		<li>
-			<a href="/foods/<%= food.id %>">
+			<a class="menu" href="/foods/<%= food.id %>">
 				<%= food.name %>
 			</a>
 		</li>
 	<% end %>
 </ol>
 
-
-
-
-
-
-
-<h4>
-	<a href="/foods/new">
+<footer>
+	<a class="nav" href="/foods/new">
 		Add New Item
 	</a>
-</h4>
-<h4>
-	<a href="/">Home</a>
-</h4>
+	<a class="nav" href="/">
+		Home
+	</a>
+</footer>

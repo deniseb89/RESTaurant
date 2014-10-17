@@ -1,8 +1,8 @@
-<h2>
+<h1>
 	Edit Food Details
-</h2>
+</h1>
 
-<form action="/foods/<%= @food.id %>" method="post">
+<form class="newfood" action="/foods/<%= @food.id %>" method="post">
 	<input type="hidden" name="_method" value="patch" />
 	<p> 
 		Name:
@@ -30,13 +30,14 @@
 
 
 
-
-<h4>
-	<a href="/foods/<%= @food.id %>">Back to Food Item</a>
-</h4>
-<h4>
-	<a href="/foods">Back to Menu</a>
-</h4>
-<h4>
-	<a href="/">Home</a>
-</h4>
+<footer>
+	<a class="nav" href="/foods/<%= @food.id %>">
+		Back to Food Item
+	</a>
+	<a class="nav" href="/foods">
+		Back to Menu
+	</a>
+	<a class="nav" href="/">
+		Home
+	</a>
+</footer>

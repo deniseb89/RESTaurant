@@ -1,67 +1,72 @@
-<h2>
+<h1>
 	Menu Item Details
-</h2>
+</h1>
 
-<table>
-	<tr>
-		<th>
-			Name
-		</th>
-		<th>
-			Cuisine
-		</th>
-		<th>
-			Price
-		</th>
-		<th>
-			Allergens
-		</th>
-		<th>
-			Spicy Level
-		</th>
-	</tr>
-	<tr>
-		<td>
-			<%= @food.name %>
-		</td>
-		<td>
-			<%= @food.cuisine %>
-		</td>
-		<td>
-			<%= @food.price %>
-		</td>
-		<td>
-			<%= @food.allergens %>
-		</td>
-		<td>
-			<%= @food.spicy_level %>
-		</td>
-	</tr>
-</table>
+<div class="content">
+	<table>
+		<tr>
+			<th>
+				Name
+			</th>
+			<th>
+				Cuisine
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Allergens
+			</th>
+			<th>
+				Spicy Level
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<%= @food.name %>
+			</td>
+			<td>
+				<%= @food.cuisine %>
+			</td>
+			<td>
+				<%= @food.price %>
+			</td>
+			<td>
+				<%= @food.allergens %>
+			</td>
+			<td>
+				<%= @food.spicy_level %>
+			</td>
+		</tr>
+	</table>
 
-<h4>
-	Parties that ordered this item:
-</h4>
-<ul>	
-	<% @food.parties.each do |party| %>
-		<li>
-			<%= party.id %>
-		</li>
-	<% end %>
-</ul>
+	<h4>
+		Parties that ordered this item:
+	</h4>
+	<ul>	
+		<% @food.parties.each do |party| %>
+			<li>
+				<%= party.surname %>
+			</li>
+		<% end %>
+	</ul>
 
-<h4>
-	<a href="/foods/<%= @food.id %>/edit">
-		Edit Food
+	<h4>
+		<a class="contentlink" href="/foods/<%= @food.id %>/edit">
+			Edit Food
+		</a>
+	</h4>
+	<form action="/foods/<%= @food.id %>" method="post">
+		<input type="hidden" name="_method" value="delete" />
+		<input type="submit" value="Delete" />
+	</form>
+</div>
+
+<footer>
+	<a class="nav" href="/foods">
+		Back to Menu
 	</a>
-</h4>
-<form action="/foods/<%= @food.id %>" method="post">
-	<input type="hidden" name="_method" value="delete" />
-	<input type="submit" value="Delete" />
-</form>
-<h4>
-	<a href="/foods">Back to Menu</a>
-</h4>
-<h4>
-	<a href="/">Home</a>
-</h4>
+	<a class="nav" href="/">
+		Home
+	</a>
+</footer>
