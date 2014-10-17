@@ -118,16 +118,11 @@ end
 
 # create: Creates a new order
 post '/orders' do 
-	parties = Party.all
+	# parties = Party.all
 	@party = Party.find(params[:party_id])
-	@food = Food.find(params[:id])
-	if parties.find(params[:party_id]).pay_status == true
-		@error_already_paid = "ERROR! This party has already paid."
-		erb :'parties/show'
-	else		
-		@party.foods << food
-		redirect "/parties/#{party.id}"		
-	end	
+	@food = Food.find(params[:id])	
+	@party.foods << @food
+	redirect "/parties/#{@party.id}"		
 end
 
 # destroy: Removes an order

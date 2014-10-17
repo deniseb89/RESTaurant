@@ -23,22 +23,16 @@
 	<input type="submit" name="Edit Party" />
 </form>
 
-
-
-
-
-<h4>
-	<a href="/parties/<%= @party.id %>">
-		Back to Party
-	</a>
-</h4>
-<h4>
-	<a href="/parties">
-		Back to Parties
-	</a>
-</h4>
-<h4>
-	<a href="/">
-		Home
-	</a>
-</h4>
+<div>
+	<footer>
+		<a class="nav" href="/parties/<%= @party.id %>">
+			Back to Party
+		</a>
+		<a class="nav" href="/parties">
+			Back to Parties
+		</a>
+		<a class="nav" href="/">
+			Home
+		</a>
+	</footer>
+</div>

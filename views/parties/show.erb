@@ -1,120 +1,117 @@
-<h2>
+<h1>
 	Party Details
-</h2>
+</h1>
 
-<table>
-	<tr>
-		<th>
-			Surname
-		</th>
-		<th>
-			Table Number
-		</th>
-		<th>
-			Number of Guests
-		</th>
-		<th>
-			Paid?
-		</th>
-	</tr>
-	<tr>
-		<td>
-			<%= @party.surname %>
-		</td>
-		<td>
-			<%= @party.table_number %>
-		</td>
-		<td>
-			<%= @party.guests %>
-		</td>
-		<td>
-			<%= @party.pay_status %>
-		</td>
-	</tr>
-</table>
-
-<% if @error_already_paid %>
-<h2>
-	<%= @error_already_paid %>
-</h2>
-<% end %>	
-
-
-
-<table>
-	<tr>
-		<th>
-			Food
-		</th>
-		<th>
-			Price
-		</th>
-		<th>
-			Remove Order?
-		</th>
-	</tr>
-	<% @party.orders.each do |order| %>
+<div class="content">
+	<table>
+		<tr>
+			<th>
+				Surname
+			</th>
+			<th>
+				Table Number
+			</th>
+			<th>
+				Number of Guests
+			</th>
+			<th>
+				Paid?
+			</th>
+		</tr>
 		<tr>
 			<td>
-				<%= order.food.name %>
+				<%= @party.surname %>
 			</td>
 			<td>
-				<%= order.food.price %>
+				<%= @party.table_number %>
 			</td>
 			<td>
-				<form action="/parties/<%= @party.id %>/orders" method="post">
-					<input type="hidden" name="order_id" value="<%= order.id %>">
-					<input type="hidden" name="_method" value="delete">
-					<input type="submit" value="Remove">
-				</form>
+				<%= @party.guests %>
+			</td>
+			<td>
+				<%= @party.pay_status %>
 			</td>
 		</tr>
-	<% end %>
-</table>
+	</table>
 
+	<% if @error_already_paid %>
+	<h2>
+		<%= @error_already_paid %>
+	</h2>
+	<% end %>	
 
-<h4>
-	Add Menu Item to this Party:
-</h4>
-<form action="/orders" method="post">
-	<p>	
-		Item Number:
-		<input type="text" name="id" />
-		<input type="hidden" name="party_id" value="<%= @party.id %>">
-	</p>	
-	<input type="submit" />
-</form>
+	<table>
+		<tr>
+			<th>
+				Food
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Remove Order?
+			</th>
+		</tr>
+		<% @party.orders.each do |order| %>
+			<tr>
+				<td>
+					<%= order.food.name %>
+				</td>
+				<td>
+					<%= order.food.price %>
+				</td>
+				<td>
+					<form action="/parties/<%= @party.id %>/orders" method="post">
+						<input type="hidden" name="order_id" value="<%= order.id %>">
+						<input type="hidden" name="_method" value="delete">
+						<input type="submit" value="Remove">
+					</form>
+				</td>
+			</tr>
+		<% end %>
+	</table>
 
+	<h4>
+		Add Menu Item to this Party:
+	</h4>
+	<form action="/orders" method="post">
+		<p>	
+			Item Number:
+			<input type="text" name="id" />
+			<input type="hidden" name="party_id" value="<%= @party.id %>">
+		</p>	
+		<input type="submit" />
+	</form>
 
+	<h4>
+		<a href="/parties/<%= @party.id %>/edit">
+			Edit
+		</a>
+	</h4>
+	<form action="/parties/<%= @party.id %>" method="post">
+		<input type="hidden" name="_method" value="delete" />
+		<input type="submit" value="Delete" />
+	</form>
 
-<h4>
-	<a href="/parties/<%= @party.id %>/edit">
-		Edit
-	</a>
-</h4>
-<form action="/parties/<%= @party.id %>" method="post">
-	<input type="hidden" name="_method" value="delete" />
-	<input type="submit" value="Delete/Checkout" />
-</form>
+	<h4>
+		<a href="/parties/<%= @party.id %>/receipt">
+			Receipt
+		</a>
+	</h4>
 
-<h4>
-	<a href="/parties/<%= @party.id %>/receipt">
-		Receipt
-	</a>
-</h4>
+	<form action="/parties/<%= @party.id %>/checkout" method="post">
+		<input type="hidden" name="_method" value="patch" />
+		<input type="submit" value="Mark as Paid" /> 
+	</form>
+</div>
 
-<form action="/parties/<%= @party.id %>/checkout" method="post">
-	<input type="hidden" name="_method" value="patch" />
-	<input type="submit" value="Mark as Paid" /> 
-</form>
-
-<h4>
-	<a href="/parties">
-		Back to Parties
-	</a>
-</h4>
-<h4>
-	<a href="/">
-		Home
-	</a>
-</h4>
+<div>
+	<footer>
+		<a class="nav" href="/parties">
+			Back to Parties
+		</a>
+		<a class="nav" href="/">
+			Home
+		</a>
+	</footer>
+</div>	

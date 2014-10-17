@@ -2,21 +2,25 @@
 	Menu
 </h1>
 
-<ol>
-	<% @foods.each do |food| %>
-		<li>
-			<a class="menu" href="/foods/<%= food.id %>">
-				<%= food.name %>
-			</a>
-		</li>
-	<% end %>
-</ol>
+<div class="content">
+	<ol>
+		<% @foods.each do |food| %>
+			<li>
+				<a class="menu" href="/foods/<%= food.id %>">
+					<%= food.name %>
+				</a>
+			</li>
+		<% end %>
+	</ol>
+</div>
 
-<footer>
-	<a class="nav" href="/foods/new">
-		Add New Item
-	</a>
-	<a class="nav" href="/">
-		Home
-	</a>
-</footer>
+<div>
+	<footer>
+		<a class="nav" href="/foods/new">
+			Add New Item
+		</a>
+		<a class="nav" href="/">
+			Home
+		</a>
+	</footer>
+</div>	
