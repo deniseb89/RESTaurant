@@ -113,5 +113,15 @@ input[type=submit]:hover {
 
 .receipt {
 	border: 2px dotted grey;
-	
+}
+
+#wrapper {
+	width: 600px;
+	margin: 0 auto;
+	text-align: left;
+	padding-left: 20px;
+}
+
+label {
+	display: block;
 }

@@ -1,0 +1,8 @@
+<%= form_open(food, method: method) %>
+<%= input_tag(type: 'text', resource: 'food', name: 'name', value: food.name) %>
+<%= input_tag(type: 'text', resource: 'food', name: 'cuisine', value: food.cuisine) %>
+<%= input_tag(type: 'text', resource: 'food', name: 'price', value: food.price) %>
+<%= input_tag(type: 'text', resource: 'food', name: 'allergens', value: food.allergens) %>
+<%= input_tag(type: 'text', resource: 'food', name: 'spicy_level', value: food.spicy_level) %>
+<%= input_tag(type: 'submit') %>
+<%= form_close %>

@@ -1,7 +1,32 @@
-<h3>New User</h3>
+<h1>Sign Up</h1>	
+	<div id="wrapper" class="content">
+    <form id="add_user_data" action="/users" method="post">
+      <label for="user_name">Username:</label>
+      <input type="text" id="user_name" name="user[username]" placeholder="username">
+      <span id="user_name_error">Name must be more than 3 characters!</span>
 
-<form action="/users" method="post">
-  <input type="text" name="user[username]" placeholder="...username">
-  <input type="password" name="password" placeholder='...password'>
-  <input type="submit">
-</form>
+      <label for="user_ph">Phone:</label>
+      <input type="tel" id="user_ph" name="user[phone]" placeholder="phone">
+      <span id="user_ph_error">Phone must be valid (555-555-5555)!</span>
+
+      <label for="user_email">Email:</label>
+      <input type="email" id="user_email" name="user[email]" placeholder="email">
+      <span id="user_email_error">Email must be valid!</span>
+
+      <label for="user_password">Password:</label>
+      <input type="text" id="user_password" name="password" placeholder="password">
+      <span id="user_password_error">Passwords Must Match!</span>
+
+      <label for="user_password_confirmation">Password Confirmation:</label>
+      <input type="text" id="user_password_confirmation" name="user_password_confirmation" placeholder="confirmation">
+
+      <br>
+      <input type="submit" value="Create User">
+    </form>
+
+
+    <div id="clear_box">
+      <button id="clear">clear</button>
+    </div>
+
+  </div>
