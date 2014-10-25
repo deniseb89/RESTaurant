@@ -1,4 +1,4 @@
 ActiveRecord::Base.establish_connection({
 	adapter: 'postgresql',
-	database: 'restaurant_app_db'
+	database: 'restaurant_db'
 	})

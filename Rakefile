@@ -4,9 +4,9 @@ Bundler.require
 require 'sinatra/activerecord/rake'
 require_relative 'connection'
 
-namespace :sinatra do 
+namespace :sinatra do
 	desc "create a config.ru"
-	task :config do 
+	task :config do
 		text = <<-eos
 require './app'
 run Sinatra::Application
@@ -15,7 +15,7 @@ run Sinatra::Application
 	end
 
 	desc "create an app.rb"
-	task :app do 
+	task :app do
 		text = <<-eos
 require 'bundler'
 Bundler.require
@@ -23,7 +23,7 @@ Bundler.require
 ROOT = Dir.pwd
 Dir[ROOT+"/models/*.rb"].each	{ |file| require file }
 
-get '/' do 
+get '/' do
 	erb :index
 end
 		eos
@@ -31,26 +31,26 @@ end
 	end
 
 	desc "create sinatra application"
-	task :new => [:config, :app] do 
+	task :new => [:config, :app] do
 		`bundle exec rackup`
 	end
 end
 
-namespace :db do 
-	desc "create restaurant_app_db database"
-	task :create_db do 
+namespace :db do
+	desc "create restaurant_db database"
+	task :create_db do
 		conn = PG::Connection.open()
-		conn.exec('CREATE DATABASE restaurant_app_db;')
+		conn.exec('CREATE DATABASE restaurant_db;')
 		conn.close
 	end
 	desc "drop restaurant_db database"
-	task :drop_db do 
+	task :drop_db do
 		conn = PG::Connection.open()
-		conn.exec('DROP DATABASE restaurant_app_db;')
+		conn.exec('DROP DATABASE restaurant_db;')
 		conn.close
 	end
 	desc "create junk data"
-	task :junk_data do 
+	task :junk_data do
 		require_relative 'models/party'
 		require_relative 'models/food'
 		require_relative 'models/order'
@@ -63,10 +63,10 @@ namespace :db do
 		Food.create({name: 'Mannish Water', cuisine: 'Jamaican', price: 9.99, allergens: 'none', spicy_level: '5'})
 		Food.create({name: 'Brown Stew Chicken', cuisine: 'Jamaican', price: 6.99, allergens: 'none', spicy_level: '3'})
 		10.times { Party.create({surname: Faker::Name.last_name, table_num: rand(1..16), guests_num: rand(1..12)}) }
-		parties = Party.all 
-		foods = Food.all 
+		parties = Party.all
+		foods = Food.all
 		parties.each do |party|
-			party.guests_num.times do 
+			party.guests_num.times do
 				Order.create({party: party, food: foods.sample}) if [true, false].sample
 			end
 		end
