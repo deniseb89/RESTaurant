@@ -1,0 +1,123 @@
+<h1>
+	Party Details
+</h1>
+
+<div class="content">
+	<table>
+		<tr>
+			<th>
+				Surname
+			</th>
+			<th>
+				Table Number
+			</th>
+			<th>
+				Number of Guests
+			</th>
+			<th>
+				Paid?
+			</th>
+			<th>
+				Arrival Time
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<%= @party.surname %>
+			</td>
+			<td>
+				<%= @party.table_num %>
+			</td>
+			<td>
+				<%= @party.guests_num %>
+			</td>
+			<td>
+				<%= @party.has_paid %>
+			</td>
+			<td>
+				<%= @party.created_at %>
+			</td>
+		</tr>
+	</table>
+
+	<% if @error_already_paid %>
+	<h2>
+		<%= @error_already_paid %>
+	</h2>
+	<% end %>	
+
+	<table>
+		<tr>
+			<th>
+				Food
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Remove Order?
+			</th>
+		</tr>
+		<% @party.orders.each do |order| %>
+			<tr>
+				<td>
+					<%= order.food.name %>
+				</td>
+				<td>
+					<%= order.food.price %>
+				</td>
+				<td>
+					<form action="/parties/<%= @party.id %>/orders" method="post">
+						<input type="hidden" name="order_id" value="<%= order.id %>">
+						<input type="hidden" name="_method" value="delete">
+						<input type="submit" value="Remove">
+					</form>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+
+	<h4>
+		Add Menu Item to this Party:
+	</h4>
+	<form action="/orders" method="post">
+		<p>	
+			Item Number:
+			<input type="text" name="id" />
+			<input type="hidden" name="party_id" value="<%= @party.id %>">
+		</p>	
+		<input type="submit" />
+	</form>
+
+	<h4>
+		<a href="/parties/<%= @party.id %>/edit">
+			Edit
+		</a>
+	</h4>
+	<form action="/parties/<%= @party.id %>" method="post">
+		<input type="hidden" name="_method" value="delete" />
+		<input type="submit" value="Delete" />
+	</form>
+
+	<h4>
+		<a href="/parties/<%= @party.id %>/receipt">
+			Receipt
+		</a>
+	</h4>
+
+	<form action="/parties/<%= @party.id %>/checkout" method="post">
+		<input type="hidden" name="_method" value="patch" />
+		<input type="submit" value="Mark as Paid" /> 
+	</form>
+</div>
+
+<div>
+	<footer>
+		<a class="nav" href="/parties">
+			Back to Parties
+		</a>
+		<a class="nav" href="/">
+			Home
+		</a>
+	</footer>
+</div>	

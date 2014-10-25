@@ -1,0 +1,49 @@
+<h1>
+	Add a New Food to the Menu
+</h1>
+
+<% if @errors %>
+<div class="errors">
+<h2>HOLD UP, WAIT A MINUTE! YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h2>
+  <ul>
+    <% @errors.each do |error|  %>
+      <li><h2><%= error %></h2></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<form class="newfood" action="/foods" method="post">
+	<p> 
+		Name:
+		<input type="text" name="food[name]" />
+	</p>	
+	<p>
+		Cuisine: 
+		<input type="text" name="food[cuisine]" />
+	</p>
+	<p>
+		Price:
+		<input type="text" name="food[price]" />
+	</p>
+	<p>
+		Allergens:
+		<input type="text" name="food[allergens]" />
+	</p>
+	<p>
+		Spicy Level:
+		<input type="text" name="food[spicy_level]" />
+	</p>
+	<input type="submit" value="Add Food" />
+</form>
+
+<div>
+	<footer>
+		<a class="nav" href="/foods">
+			Back to Menu
+		</a>
+		<a class="nav" href="/">
+			Home
+		</a>
+	</footer>
+</div>
