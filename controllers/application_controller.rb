@@ -1,11 +1,15 @@
 class ApplicationController < Sinatra::Base
+	helpers Sinatra::AuthenticationHelper
 
-	ROOT = Dir.pwd
-	Dir[ROOT+"/models/*.rb"].each	{ |file| require file }
-	require_relative 'connection'
+	ActiveRecord::Base.establish_connection({
+	  adapter: 'postgresql',
+	  database: 'restaurant_db'
+	})
 
 	set :views, File.expand_path("../../views", __FILE__)
-	enable :sessions
+	set :public_folder, File.expand_path("../../public", __FILE__)
+
+	enable :sessions, :method_override
 
 	get '/' do
 		erb :index
@@ -19,7 +23,7 @@ class ApplicationController < Sinatra::Base
 		redirect "/parties/#{@party.id}"
 	end
 
-	# not_found do
-	# 	halt 404, "I can't find that"
-	# end
+	not_found do
+		halt 404, "I can't find that"
+	end
 end

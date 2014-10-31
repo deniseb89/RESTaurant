@@ -1,17 +1,16 @@
-class FoodsController < ApplicationControler
-# *****EDIT ROUTES TO REFLECT THAT EVERYTHING NOW STARTS WITH /SESSIONS*****
+class FoodsController < ApplicationController
 
-	get '/foods' do
+	get '/' do
 		@foods = Food.all
 		erb :"foods/index"
 	end
 
-	get '/foods/new' do
+	get '/new' do
 		authenticate!
 		erb :"foods/new"
 	end
 
-	post '/foods' do
+	post '/' do
 		food = Food.create(params[:food])
 		if food.valid?
 			redirect "/foods/#{food.id}"
@@ -21,23 +20,23 @@ class FoodsController < ApplicationControler
 		end
 	end
 
-	get '/foods/:id/edit' do
+	get '/:id/edit' do
 		@food = Food.find(params[:id])
 		erb :'foods/edit'
 	end
 
-	patch '/foods/:id' do
+	patch '/:id' do
 		food = Food.find(params[:id])
 		food.update(params[:food])
 		redirect "/foods/#{food.id}"
 	end
 
-	get '/foods/:id' do
+	get '/:id' do
 		@food = Food.find(params[:id])
 		erb :'foods/show'
 	end
 
-	delete '/foods/:id' do
+	delete '/:id' do
 		Food.destroy(params[:id])
 		redirect'/foods'
 	end
