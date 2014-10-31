@@ -1,8 +1,5 @@
-require 'bundler'
-Bundler.require
 
-ROOT = Dir.pwd
-Dir[ROOT+"/models/*.rb"].each	{ |file| require file }
+
 
 require_relative 'connection'
 
@@ -11,13 +8,10 @@ require_relative 'helpers/form_helper'
 
 enable :sessions
 
-get '/' do
-	erb :index
-end
 
 get '/foods' do
 	@foods = Food.all
-	erb :"food/index"
+	erb :"foods/index"
 end
 
 get '/sessions/new' do
@@ -32,11 +26,8 @@ post '/users' do
 end
 
 get '/foods/new' do
-	if session[:current_user]
-		erb :"food/new"
-	else
-		redirect '/foods'
-	end
+	authenticate!
+	erb :"foods/new"
 end
 
 get '/login' do
