@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
 
 	get '/' do
-		@foods = Food.all
+    @foods = Food.all
 		erb :"foods/index"
 	end
 
