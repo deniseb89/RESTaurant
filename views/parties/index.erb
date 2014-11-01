@@ -1,26 +1,26 @@
 <h1>
-	Current Parties
+  Current Parties
 </h1>
 
 <div class="content">
 <ul>
-	<% @parties.each do |party| %>
-		<li>
-			<a href="/parties/<%= party.id %>">
-				<%= party.surname %>
-			</a>
-		</li>
-	<% end %>
+  <% @parties.each do |party| %>
+    <li>
+      <a href="/parties/<%= party.id %>">
+        <%= party.surname %>
+      </a>
+    </li>
+  <% end %>
 </ul>
 </div>
 
 <div>
-	<footer>
-		<a class="nav" href="/parties/new">
-			Add a Party
-		</a>
-		<a class="nav" href="/">
-			Home
-		</a>
-	</footer>
+  <footer>
+    <a class="nav" href="/parties/new">
+      Add a Party
+    </a>
+    <a class="nav" href="/">
+      Home
+    </a>
+  </footer>
 </div>	

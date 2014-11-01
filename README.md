@@ -1,6 +1,6 @@
 Irie!
 
-Welcome to Dung a Gully Jerk Pit. We serve the finest Jamaican food in Brooklyn.
+Welcome to Down a Gully Jerk Pit. We serve the finest Jamaican food in Brooklyn.
 
 As an employee, you can use this portal to keep track of the menu and current guests at the restaurant. 
 
