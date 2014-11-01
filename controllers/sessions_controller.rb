@@ -27,5 +27,4 @@ class SessionsController < ApplicationController
 			redirect '/foods/new'
 		end
 	end
-
 end
