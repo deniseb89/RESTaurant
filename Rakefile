@@ -2,7 +2,11 @@ require 'bundler'
 Bundler.require
 
 require 'sinatra/activerecord/rake'
-require_relative 'connection'
+
+	ActiveRecord::Base.establish_connection({
+	  adapter: 'postgresql',
+	  database: 'restaurant_db'
+	})
 
 namespace :sinatra do
 	desc "create a config.ru"

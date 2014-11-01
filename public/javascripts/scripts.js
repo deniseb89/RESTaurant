@@ -12,30 +12,6 @@ $(document).ready(function(){
     }
   });
 
-// ****PHONE****
-  $phoneInput = $("#user_ph");
-  $phoneError = $("#user_ph_error");
-  $phoneInput.on("keyup", function(e){
-    var number = $(this).val();
-    if (isValidPhone(number)){
-      $phoneError.css('color', 'green');
-    } else {
-      $phoneError.css('color', 'red');
-    }
-  });
-
-  // ****EMAIL****
-  $emailInput = $("#user_email");
-  $emailError = $("#user_email_error");
-  $emailInput.on("keyup", function(e){
-    var email = $(this).val();
-    if (isValidEmail(email)){
-      $emailError.css('color', 'green');
-    } else {
-      $emailError.css('color', 'red');
-    }
-  });
-
   // ****PASSWORD****
   $passwordInput = $("#user_password");
   $passwordConfirmationInput = $("#user_password_confirmation");
@@ -53,7 +29,7 @@ $(document).ready(function(){
   //set up event for form submit
   $form = $("#add_user_data");
   $form.on("submit", function(e){
-    if (isValidPhone($phoneInput.val()) && isValidSuit($suitInput.val()) && isValidAge($ageInput.val()) && isValidEmail($emailInput.val()) && isValidUserName($userNameInput.val()) && passwordsMatch(passwordconf.val())) {
+    if (isValidUserName($userNameInput.val()) && passwordsMatch(passwordconf.val())) {
 
     } else {
       e.preventDefault();
