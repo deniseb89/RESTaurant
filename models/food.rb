@@ -1,5 +1,5 @@
 class Food < ActiveRecord::Base
-	has_many(:orders)
-	has_many(:parties, :through => :orders)
-	validates :name, presence: true, uniqueness: true
-end 
+  has_many(:orders)
+  has_many(:parties, :through => :orders)
+  validates :name, presence: true, uniqueness: true
+end
